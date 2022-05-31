@@ -11,6 +11,9 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
 const basename = path.basename(__filename);
+sequelize.authenticate()
+.then(console.log('Estamos conectados a la base de datos'))
+.catch(console.error)
 
 const modelDefiners = [];
 
