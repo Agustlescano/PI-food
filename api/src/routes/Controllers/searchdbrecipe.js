@@ -10,4 +10,12 @@ const  {Recipe} = require('../../db');
            }
   ;
 }
-module.exports = {foundRecipes};
+async function foundID(id){
+  if (id){
+      return await Recipe.findAll({
+          where :{ ID : id}
+      })
+           }
+  ;
+}
+module.exports = {foundRecipes,foundID};

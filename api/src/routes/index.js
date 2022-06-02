@@ -12,6 +12,6 @@ const router = Router();
 // Configurar los routers
 
 router.use('/recipes', Recipename);
-
+router.use(`/recipes/`, Recipeid);
 
 module.exports = router;
