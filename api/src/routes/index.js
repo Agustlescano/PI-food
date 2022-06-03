@@ -13,5 +13,6 @@ const router = Router();
 
 router.use('/recipes', Recipename);
 router.use(`/recipes/`, Recipeid);
-
+router.use('/types', Types);
+router.use(`/recipe`, Recipepost);
 module.exports = router;

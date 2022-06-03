@@ -2,9 +2,11 @@ const express = require('express');
 const app = express.Router();
 const axios = require('axios');
 const {foundRecipes} = require('./Controllers/searchdbrecipe');
+
   app.get('/', async function(req, res){
     const {name} = req.query
     const key = process.env.API_KEY;
+    //verificamos que nombre exista y buscamos tanto en la bs como en la api
       if (name){
           let found = await foundRecipes(name);
           await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${name}${key}&addRecipeInformation=true`)
@@ -13,6 +15,8 @@ const {foundRecipes} = require('./Controllers/searchdbrecipe');
           
       } else res.send('no hay nombre')
   })
+
+  
 
 
 
