@@ -5,7 +5,8 @@ const  {Kinds} = require('../db');
 
 app.get('/', async(req, res) => {
     //respondemos con toda la informacion guardada de db
- res.send(await Kinds.findAll());
+   
+     res.send(await Kinds.findAll());
 })
 
 module.exports = app;
