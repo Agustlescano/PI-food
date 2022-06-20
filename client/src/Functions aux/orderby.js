@@ -1,14 +1,13 @@
 
-export const orderBy = (recipes,order) => {
-    return recipes.sort((a,b) => {
-        if(order === 'name ascent'){
-            return a.name > b.name ? 1 : -1
-        }
-        if(order === 'name descent'){
-            return a.name < b.name ? 1 : -1
-        }
-        if(order === 'puntuacion'){
-            return a.puntuacion > b.puntuacion ? 1 : -1
-        }
-    })
+const orders=( state,order) =>{
+    let ordenado
+    
+    if(order==='healthScore descent'){ordenado= [...state.sort((a,b)=> a.healthScore<b.healthScore?1 : -1)];}
+    if(order==='healthScore ascent'){ordenado= [...state.sort((a,b)=> a.healthScore<b.healthScore?1 : -1)];}
+    if(order==='name descent'){ordenado= [...state.sort((a,b)=>a.title< b.title ? 1 : -1)];}
+    if(order==='name ascent'){ordenado= [...state.sort((a,b)=> a.title> b.title ? 1 : -1)];}
+    console.log(ordenado)
+    return ordenado
+    
 }
+module.exports = orders

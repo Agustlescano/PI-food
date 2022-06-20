@@ -1,29 +1,31 @@
+
 const inicialState = {
   recipes : [],
-  search : {},
-  Kinds : [],
+  search : [],
+  Details : {},
+  kinds : [],
    
 }
 
 
-async function reducer (state=inicialState,{type,payload}) {
+const reducer = (state=inicialState,{type,payload}) => {
     switch(type){
       case 'ALL_RECIPES':
+        console.log(payload)
         return {...state,recipes:payload}
       case 'GET_KINDS':
-          return {...state,Kinds:payload}
+        console.log(payload)
+        return {...state,kinds:payload}
       case 'SEARCH_RECIPES':
         return {...state,search:payload}
       case 'GET_BY_ID': 
-        return {...state,search:payload}
-      case 'ORDER_BY':
-        let orderBy = await orderBy(state.recipes,payload)
-        return {...state,recipes:orderBy}
+        return {...state,details:payload}
       case 'FILTER_BY':
-        let filterBy = await filterBy(state.recipes,payload)
+        let filterBy = filterBy(state.recipes,payload)
         return {...state,recipes:filterBy}
         default: return state
       }
+      
 }
 
 

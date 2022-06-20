@@ -1,3 +1,4 @@
+// import {orders} from '../Functions aux/orderby'
 const axios = require('axios') 
 
 export const ALL_RECIPES = 'ALL_RECIPES'
@@ -20,17 +21,18 @@ export const allRecipes = () => {
     }
 }
 export const allKinds = () => {
+    console.log('all kinds')
     return dispatch => {
-        axios.get('http://localhost:3001/kinds')
+        axios.get('http://localhost:3001/Types')
         .then(res => {
             dispatch({
-                type: GET_KIND,
+                type: GET_KINDS,
                 payload: res.data
             })
         })
     }
 }
-export const search = (name) => {
+export const searchbyname = (name) => {
     return dispatch => {
         axios.get(`http://localhost:3001/recipes?name=${name}`)
         .then(res => {
@@ -54,12 +56,12 @@ export const getById = (id) => {
 }
 export const orderBy = (order) => {
     return dispatch => {
-            dispatch({
-                type: ORDER_BY,
-                payload: order
-            })
-        }
+       dispatch({
+           type: ORDER_BY,
+              payload: order
+       })
     }
+}
 export const filterBy = (filter) => {
     return dispatch => {
             dispatch({

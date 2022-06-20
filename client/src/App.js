@@ -1,10 +1,19 @@
 import './App.css';
+import {BrowserRouter,Routes,Route,} from "react-router-dom"
+import Landing from './Components/Landing';
+import Home from './Components/Home';
+import Details from './Components/Details.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Henry Food</h1>
-    </div>
+    <BrowserRouter>
+    
+    <Routes> 
+      <Route path="/" element={<Landing/>} />
+      <Route path="/home" element={<Home/>} />
+      <Route path="/about/:id" element={<Details/>} />
+    </Routes>
+    </BrowserRouter>
   );
 }
 
