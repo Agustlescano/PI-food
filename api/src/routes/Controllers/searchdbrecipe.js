@@ -4,6 +4,7 @@ const  {Recipe, Kinds} = require('../../db');
 const {buildobjet,buildobjets} = require('./buildobjets');
 
  async function foundRecipes(name){
+  console.log(name)
   if (name){
       let result = await Recipe.findAll({
           where :{ Name : name},include: [{model: Kinds}] 

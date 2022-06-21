@@ -1,11 +1,12 @@
 const buildobjet=(recipe) =>{ 
+    console.log(recipe)
     if (recipe.length === 0) return []
     const objet = {
         id:recipe[0].id,
         title: recipe[0].Name,
         summary: recipe[0].Description,
         diets: [],
-        steps: recipe[0].Steps,
+        instructions: recipe[0].Steps,
         healthScore: recipe[0].HealthScore,
         weightWatcherSmartPoints: recipe[0].Puntuacion
 
@@ -15,13 +16,13 @@ const buildobjet=(recipe) =>{
     return objet
 }
 const buildobjets=(recipe,) =>{
-    console.log(recipe.dataValues.ID)
+    console.log(recipe.dataValues)
     const objet = {
     id:recipe.ID,
     title: recipe.dataValues.Name,
     summary: recipe.dataValues.Description,
     diets: [],
-    steps: recipe.dataValues.Steps,
+    instructions: recipe.dataValues.Steps,
     healthScore: recipe.dataValues.HealthScore,
     weightWatcherSmartPoints: recipe.dataValues.Puntuacion
 

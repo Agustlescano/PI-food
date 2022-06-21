@@ -5,8 +5,7 @@ export const ALL_RECIPES = 'ALL_RECIPES'
 export const GET_KINDS = 'GET_KINDS'
 export const SEARCH_RECIPES = 'SEARCH_RECIPES'
 export const GET_BY_ID = 'GET_BY_ID'
-export const ORDER_BY = 'ORDER_BY'
-export const FILTER_BY = 'FILTER_BY'
+
 
 
 export const allRecipes = () => {
@@ -54,23 +53,10 @@ export const getById = (id) => {
         })
     }
 }
-export const orderBy = (order) => {
-    return dispatch => {
-       dispatch({
-           type: ORDER_BY,
-              payload: order
-       })
-    }
-}
-export const filterBy = (filter) => {
-    return dispatch => {
-            dispatch({
-                type: FILTER_BY,
-                payload: filter
-            })
-        }
-    }
+
+
 export const addRecipe = (recipe) => {
+    console.log(recipe)
     axios.post(`http://localhost:3001/recipe`,recipe)
     .then(res => {console.log(res)})
     .catch(err =>console.error(err))

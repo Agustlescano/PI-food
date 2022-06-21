@@ -4,14 +4,14 @@ const {createrecipe} = require('./Controllers/recipepost');
 
 app.post('/', async function(req, res){
   //traigo los datos necesarios del body
-    const {Name,Details,Puntuacion,HealthScore,Steps,types} = req.body
-    console.log(Name)
+    const {Name,Details,Puntuacion,HealthScore,instructions,types} = req.body
+    console.log(req.body)
     const recipe ={
       Name: Name,
       Details: Details,
       Puntuacion: Puntuacion,
       HealthScore: HealthScore,
-      Steps:Steps
+      Steps: instructions
     }
     //verifico que Name y Details existan
     if(Name && Details){
@@ -25,4 +25,4 @@ app.post('/', async function(req, res){
 
 
   })
-  module.exports = app;
+  module.exports = app; //exporto el router

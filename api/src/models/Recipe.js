@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT
     },
    Steps:{
-      type: DataTypes.JSON
+      type: DataTypes.TEXT
     }
   });
 };

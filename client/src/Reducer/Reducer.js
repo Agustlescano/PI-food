@@ -19,10 +19,8 @@ const reducer = (state=inicialState,{type,payload}) => {
       case 'SEARCH_RECIPES':
         return {...state,search:payload}
       case 'GET_BY_ID': 
-        return {...state,details:payload}
-      case 'FILTER_BY':
-        let filterBy = filterBy(state.recipes,payload)
-        return {...state,recipes:filterBy}
+        return {...state,Details:payload}
+     
         default: return state
       }
       
