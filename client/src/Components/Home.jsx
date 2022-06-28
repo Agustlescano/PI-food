@@ -93,7 +93,8 @@ function Home() {
         <Loading></Loading>
       </div>
     );
-  } else if (items().length) {
+  }
+   else if (items().length) {
     return (
       <div className="conteiner-home" key={5}>
         <div className="filtros" key={6}>
@@ -138,6 +139,7 @@ function Home() {
               className="input"
               type="submit"
               value="search"
+              disabled={!search.length}
               onClick={searcher}
             />
           </div>

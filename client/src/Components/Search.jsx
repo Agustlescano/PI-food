@@ -129,6 +129,7 @@ function Search() {
               className="input"
               type="submit"
               value="search"
+              disabled={!search.length}
               onClick={searcher}
             />
             <input

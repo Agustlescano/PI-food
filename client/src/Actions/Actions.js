@@ -1,4 +1,4 @@
-// import {orders} from '../Functions aux/orderby'
+
 const axios = require('axios') 
 
 export const ALL_RECIPES = 'ALL_RECIPES'
@@ -6,7 +6,6 @@ export const GET_KINDS = 'GET_KINDS'
 export const SEARCH_RECIPES = 'SEARCH_RECIPES'
 export const GET_BY_ID = 'GET_BY_ID'
 export const RESET = 'RESET'
-
 
 
 export const allRecipes = () => {
@@ -32,15 +31,22 @@ export const allKinds = () => {
     }
 }
 export const searchbyname = (name) => {
+
+
     return dispatch => {
         axios.get(`http://localhost:3001/recipes?name=${name}`)
-        .then(res => {
+        .then(res => {console.log(res.data)
             dispatch({
                 type: SEARCH_RECIPES,
                 payload: res.data
             })
         })
-        .catch(err => {alert('Recipe no found')})
+        .catch(err => {
+            dispatch({
+                type: SEARCH_RECIPES,
+                payload: [{title:'No results found'}]
+            })
+        })
     }
 }
 export const getById = (id) => {
