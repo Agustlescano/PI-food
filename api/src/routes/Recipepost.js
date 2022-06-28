@@ -18,7 +18,7 @@ app.post('/', async function(req, res){
       //Llamo a la funcion para crear la receta
      
       await createrecipe(recipe,types)
-      .then(res.send('Created'))
+      .then(res.send({message:'Created'}))
     }else{
       res.send('Faltan datos obligatorios')
     }

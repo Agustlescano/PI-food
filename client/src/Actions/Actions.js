@@ -5,6 +5,7 @@ export const ALL_RECIPES = 'ALL_RECIPES'
 export const GET_KINDS = 'GET_KINDS'
 export const SEARCH_RECIPES = 'SEARCH_RECIPES'
 export const GET_BY_ID = 'GET_BY_ID'
+export const RESET = 'RESET'
 
 
 
@@ -20,7 +21,6 @@ export const allRecipes = () => {
     }
 }
 export const allKinds = () => {
-    console.log('all kinds')
     return dispatch => {
         axios.get('http://localhost:3001/Types')
         .then(res => {
@@ -40,6 +40,7 @@ export const searchbyname = (name) => {
                 payload: res.data
             })
         })
+        .catch(err => {alert('Recipe no found')})
     }
 }
 export const getById = (id) => {
@@ -58,6 +59,13 @@ export const getById = (id) => {
 export const addRecipe = (recipe) => {
     console.log(recipe)
     axios.post(`http://localhost:3001/recipe`,recipe)
-    .then(res => {console.log(res)})
+    .then(res => {alert('Recipe added')})
     .catch(err =>console.error(err))
+}
+export const reset =()=>{
+    return dispatch => {
+        dispatch({
+            type: RESET
+        })
+    }
 }

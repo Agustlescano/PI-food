@@ -1,5 +1,6 @@
 
 const orders=( state,order) =>{
+   
     let ordenado
     
     if(order==='healthScore descent'){ordenado= [...state.sort((a,b)=> a.healthScore<b.healthScore?1 : -1)];}

@@ -1,0 +1,13 @@
+.conteiner-recipes{
+ 
+    background-color: rgba(233, 233, 233, 0.7);
+    border-radius:10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 5px;
+    width : 100%;
+    margin-top: 2%
+    
+}

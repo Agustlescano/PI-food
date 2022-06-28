@@ -7,7 +7,7 @@ async function createrecipe(recipe,diets){
   const obj = await Recipe.create(recipe)
     if (diets){
       //mapeo el arreglo de dietas, y por cada una agrego la receta creada
-  diets.map(async ({value})=>{
+  diets.map(async (value)=>{
     const tipo= await Kinds.findAll({where:{Name:value}})
     obj.addKinds(tipo).then(p=>{console.log('created')}).catch(err =>{ console.log('error creating recipe')})
   })

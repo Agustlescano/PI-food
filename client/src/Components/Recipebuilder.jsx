@@ -1,22 +1,23 @@
 import {Link} from "react-router-dom"
-
-
+import { buscarimg } from "../Functions aux/buscarimg"
+import {buscardiets} from "../Functions aux/buscardiets"
+import  "./estilos/Recipebuilder.css"
 const Recipebuilder = (receta) => {
     const recipe = receta.receta
-    function buscarimg(image){
-        if(image){return (<img src={image}></img>)}
-        else {return (<img src={'https://img-9gag-fun.9cache.com/photo/aZ0Xrvz_460s.jpg'}></img>)}
-    }
-    function buscardiets(diets){
-        if (diets){return diets.map(diet => <li>{diet}</li>)}
-        else {return (<li>No hay diets</li>)}
-    }
+ 
  return (
-     <div className="recipe-builder">
-         <h2>Name:{recipe.title}</h2>
-         {buscardiets(recipe.diets)}
+     <div className="card">
+        <div className="face front">
          {buscarimg(recipe.image)}
-         <Link to={`/about/${recipe.id}`} >About</Link>
+         <h3>{recipe.title}</h3>
+        </div>
+        <div className="face back">
+         {buscardiets(recipe.diets)}
+         <div className="link">
+         <Link to={`/about/${recipe.id}`} >Details</Link>
+         </div>
+        </div>
+       
      </div>
  )
 }

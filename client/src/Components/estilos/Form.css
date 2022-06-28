@@ -1,0 +1,54 @@
+.form {
+    margin : 2%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(233, 233, 233, 0.7);
+    height: 100%;
+    padding: 2%;
+}
+.form .formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form li{
+    color: rgb(187, 45, 45)
+}
+ 
+.form .input{
+    width: 500px;
+    height: 20px;
+    
+}
+.form .instructions{
+    width:100%  ;
+    height: 100px;
+}
+.form .select{
+    width: 100%;
+}
+.form .link {
+    color: #18272F;
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .form .link::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #18272F;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+  }
+  
+  .form .link:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+  }

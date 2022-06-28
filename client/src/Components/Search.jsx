@@ -3,21 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import orders from "../Functions aux/orderby";
 import filterby from "../Functions aux/filterby";
 import ConteinersRecipes from "./ConteinerRecipes";
-import { allRecipes, allKinds,reset} from "../Actions/Actions";
-import { Link, useNavigate } from "react-router-dom";
-
+import { allRecipes, allKinds, searchbyname } from "../Actions/Actions";
+import { Link, useParams, useNavigate} from "react-router-dom";
 import Loading from './Loanding'
 import './estilos/Home.css'
 
-function Home() {
-  const dispatch = useDispatch();
+function Search() {
   const navigate = useNavigate()
-  let recetas = useSelector((state) => state.recipes);
+  const dispatch = useDispatch();
+  let recetas = useSelector((state) => state.search);
   let kinds = useSelector((state) => state.kinds);
   let [recipes,setRecipes] = useState(recetas)
   let [filtrados, setfiltrados] = useState(recetas);
   const [current, setcurrent] = useState(0);
   const [search, setsearch] = useState("");
+  let {name} = useParams()
   let options = [{value:'All Recipes', label:'All recipes'},{value: 'creados', label:'Creados'}]
   kinds.map(kind => options.push({
     value : kind.Name,
@@ -25,18 +25,20 @@ function Home() {
 }))
 
   useEffect(() => {
-    dispatch(allRecipes());
+    dispatch(searchbyname(name));
     dispatch(allKinds());
     ;
-  }, [dispatch]);
+  }, [dispatch,name]);
   let arr = [];
   let items = () => {
-     if (filtrados.length) {
-      if (current > 0 && filtrados.length < 9) {
-        setcurrent(0);
-      }
-      arr = filtrados;
-    } else if (recipes.length) {
+    if (filtrados.length) {
+        if (current > 0 && filtrados.length < 9) {
+          setcurrent(0);
+        }
+        arr = filtrados;
+    }
+        
+    else if (recipes.length) {
       
       arr = recipes;} else {
       arr = recetas;
@@ -63,21 +65,17 @@ function Home() {
   };
 
   const filterbytype = ({value}) => {
-    let filter 
-    filter = filterby(recetas,value)
-    console.log(filter)
+    let filter = filterby(recetas, value);
     return setfiltrados(filter);
-      
-  
     }
  
  
   const searcher = () => {
-    console.log(search)
-   dispatch(reset())
-   navigate(`/search/${search}`,{replace:true, search: search})
+     navigate(`/search/${search}`)
   };
-  
+  const reset = () => {
+    navigate("/home");
+  }
   
 
   if (!recetas.length) {
@@ -120,6 +118,7 @@ function Home() {
           <div>
             <input value={search} type="text" onChange={(e) =>setsearch(e.target.value)} />
             <input className="input" type="submit" value="search" onClick={searcher} />
+            <input className="input" type="submit" value="Back to Home" onClick={() => reset()} />
           </div>
         
           <select className='select' onChange={(e) => filterbytype(e.target)} >
@@ -142,4 +141,4 @@ function Home() {
 }
 
 
-export default Home;
+export default Search;
